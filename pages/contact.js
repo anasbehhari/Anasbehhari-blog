@@ -32,7 +32,7 @@ const contact = () => {
                                             defaultValue={""}
                                         />
                                         <input
-                                            className="btn btn-primary"
+                                            className="btn btn-primary full"
                                             type="submit"
                                             defaultValue="Send Message"
                                             rows={4}
