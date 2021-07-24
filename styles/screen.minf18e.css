@@ -3980,3 +3980,11 @@ a {
 .full {
   width: 100%;
 }
+.l {
+  width: .38rem;
+  height: .38rem;
+  background-color: var(--c-text-light);
+  border-radius: 50%;
+  margin:0 .5rem;
+  
+}
