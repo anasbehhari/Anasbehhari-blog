@@ -12,15 +12,15 @@ const BlogSchema = new mongoose.Schema({
   },
   views: {
     type: String,
-    required: true,
+    default:"0"
   },
   likes: {
     type: String,
-    required: true,
+    default:"0"
   },
   dislikes: {
     type: String,
-    required: true,
+    default:"0"
   },
   readTime: {
     type: String,

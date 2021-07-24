@@ -104,6 +104,7 @@ function MyApp({ Component,pageProps }) {
       </div>
       <script src="/assets/js/app.js"></script>
       <script src="/assets/js/app.bundle.minf18e.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
     </>
   )
 }

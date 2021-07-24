@@ -1,17 +1,17 @@
 import connectDb from "../../../../utils/Dbconn";
-import Tag from "../../../../models/Tag";
+import Blog from "../../../../models/Blog";
 connectDb();
 export default async (req, res) => {
   const { query, method } = req;
 
-  if (method == "GET" && query.name) {
-    const currentTag = await Tag.find({ name: query.name });
+  if (method == "GET" && query.title) {
+    const currentBlog = await Blog.find({ title: query.title });
     try {
-      if (currentTag.length != 0) {
-        res.status(200).json(currentTag)
+      if (currentBlog.length != 0) {
+        res.status(200).json(currentBlog)
       }
       else {
-        res.status(400).json({ message: "Tag not found !" })
+        res.status(400).json({ message: "Blog not found !" })
       }
     } catch (error) {
       res.status(400).json({ message: "something went wrong", error })

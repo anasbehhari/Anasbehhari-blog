@@ -91,7 +91,7 @@ const index = () => {
                             <article className="post-card flex">
                                 <a href="self-observation-is-the-first-step-of-inner-unfolding/index.html" className="post-img-wrap">
                                     <img className="post-img" loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
-                                     src="" alt="Self-observation is the first step of inner unfolding" />
+                                        src="" alt="Self-observation is the first step of inner unfolding" />
                                 </a>
                                 <div className="post-info-wrap">
                                     <div className="flex post-top-meta">
@@ -105,8 +105,9 @@ const index = () => {
                                         </div>
                                     </div>
                                     <h2 className="h3 post-title">
-                                        <a href="self-observation-is-the-first-step-of-inner-unfolding/index.html">Self-observation is the
-                                            first step of inner unfolding</a>
+                                        <Link href="/blog/Self-observation-is-the-first-step-of-inner-unfolding">
+                                            Self-observation is the first step of inner unfolding
+                                        </Link>
                                     </h2>
                                     <div className="post-excerpt">
                                         Almost instantly the whole truth of the transaction seemed
