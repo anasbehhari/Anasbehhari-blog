@@ -2,9 +2,8 @@ import { useRouter } from 'next/router'
 import Head from "next/head";
 import NFS from "../../components/404";
 import { useEffect } from "react";
-function replaceAll(str, find, replace) {
-  return str.replace(new RegExp(find, 'g'), replace);
-}
+import replaceAll from "../../../utils/replaceAll"
+import Dateit from "../../../utils/Dateit"
 function index({ blog }) {
   if (blog.length > 0) {
     let title = blog[0].title;
@@ -14,25 +13,10 @@ function index({ blog }) {
     let readTime = blog[0].readTime;
     let views = blog[0].views;
     date = new Date(date)
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
     
     
-    function Dateit(d) {
-      return monthNames[d.getMonth()] + " " + d.getDay() + ", " + d.getFullYear();
-    }
+    
+    
     
     useEffect(() => {
       $(".post-content").append(data)
@@ -65,7 +49,7 @@ function index({ blog }) {
                     </div>
                   </header>
                   <div className="post-content">
-
+                    
                   </div>
                 </article>
               </div>

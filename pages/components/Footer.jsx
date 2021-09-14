@@ -1,7 +1,16 @@
 import Link from "next/link";
+import React from "react";
 const axios = require('axios').default;
 const Footer = () => {
+  const [Tags, setTags] = React.useState(null);
+  React.useEffect(() => {
+    axios.get("http://localhost:3000/api/tags?max=4").then((response) => {
+      setTags(response.data);
+    });
+  }, []);
+  if (!Tags) return null;
   return (
+    
     <footer className="site-footer">
       <div className="container">
         <div className="footer-top">
@@ -37,6 +46,7 @@ const Footer = () => {
                   <h3 className="title h6">Browse</h3>
                   <nav>
                     <ul className="no-style-list">
+
                       <li className="nav-link">
                         <Link href="/blogs">Home</Link>
                       </li>
@@ -61,21 +71,12 @@ const Footer = () => {
                   </h3>
                   <nav>
                     <ul className="no-style-list">
-                      <li className="nav-link">
-                        <Link href="/tag/Education">Education</Link>
+                      {Tags.map(tag=> (
+                        <li  key={tag._id} className="nav-link">
+                        <Link  href={"/tag/"+tag.name}>{tag.name}</Link>
                       </li>
-                      <li className="nav-link">
-                        <Link href="/tag/Travel">Travel</Link>
-                      </li>
-                      <li className="nav-link">
-                        <Link href="/tag/Coding">Coding</Link>
-                      </li>
-                      <li className="nav-link">
-                        <Link href="/tag/Bugs">Bugs</Link>
-                      </li>
-                      <li className="nav-link">
-                        <Link href="/tag/javascript">Javascript</Link>
-                      </li>
+                      ))}
+                      
                     </ul>
                   </nav>
                 </div>

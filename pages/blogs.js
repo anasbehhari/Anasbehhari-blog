@@ -127,7 +127,7 @@ const blogs = () => {
                 <div className="col">
                     <div className="pagination-wrap text-center">
                         <button className="btn" id="load-more-posts">
-                            <span>Load more posts</span>
+                            <span>Load more blogs</span>
                         </button>
                     </div>
                 </div>

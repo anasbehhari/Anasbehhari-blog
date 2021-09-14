@@ -31,6 +31,10 @@ const BlogSchema = new mongoose.Schema({
     required: true, 
   }
   ,
+  brief : {
+    type: String
+  }
+  ,
   creationDate: {
     type: Date,
     default: Date.now,
