@@ -1,4 +1,5 @@
 import Link from "next/link";
+const axios = require('axios').default;
 const Footer = () => {
   return (
     <footer className="site-footer">

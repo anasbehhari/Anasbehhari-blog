@@ -1,6 +1,8 @@
+const axios = require('axios');
 import Head from 'next/head'
 import Link from 'next/link'
-const index = () => {
+const index = ({ populars, error }) => {
+    console.log(populars);
     return (
         <>
             <Head>
@@ -131,13 +133,12 @@ const index = () => {
                                                 x="0px"
                                                 y="0px"
                                                 viewBox="0 0 16 16"
-                                                style={{ enableBackground: "new 0 0 16 16" }}
                                                 xmlSpace="preserve"
                                             >
                                                 <g>
-                                                    <circle style={{ fill: 'currentcolor' }} cx={8} cy="7.99" r={1} />
+                                                    <circle className="current-clr-fill" cx={8} cy="7.99" r={1} />
                                                     <path
-                                                        style={{ fill: 'currentcolor' }} d="M8,2.981c-5.003,0-8,5.009-8,5.009s2.985,5.029,8,5.029s8-5.029,8-5.029S13.003,2.981,8,2.981z M8,10.99c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S9.657,10.99,8,10.99z" />
+                                                        className="current-clr-fill" d="M8,2.981c-5.003,0-8,5.009-8,5.009s2.985,5.029,8,5.029s8-5.029,8-5.029S13.003,2.981,8,2.981z M8,10.99c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S9.657,10.99,8,10.99z" />
                                                 </g>
                                             </svg>
                                             <span>80</span>
@@ -229,5 +230,13 @@ const index = () => {
         </>
     );
 }
-
+index.getInitialProps = async ctx => {
+    try {
+        const res = await axios.get('localhost:3000/api/blogs/lts-pop');
+        const populars = res.data;
+        return { populars };
+    } catch (error) {
+        return { error };
+    }
+};
 export default index;

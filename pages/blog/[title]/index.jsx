@@ -10,9 +10,30 @@ function index({ blog }) {
     let title = blog[0].title;
     let data = blog[0].data;
     let author = blog[0].author;
-    let date = blog[0].date;
+    let date = blog[0].creationDate;
     let readTime = blog[0].readTime;
     let views = blog[0].views;
+    date = new Date(date)
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    
+    
+    function Dateit(d) {
+      return monthNames[d.getMonth()] + " " + d.getDay() + ", " + d.getFullYear();
+    }
+    
     useEffect(() => {
       $(".post-content").append(data)
     })
@@ -22,11 +43,10 @@ function index({ blog }) {
           <title>{replaceAll(title, "-", " ")} | Anas Behhari's Blogs 2021</title>
         </Head>
         <div className="main">
-
           <div className="container">
             <div className="row">
               <div className="col-lg-10 offset-lg-1">
-                <article>
+                <article  className="art-1">
                   <header className="post-header">
                     <h1 className="post-title">
                       {replaceAll(title, "-", " ")}
@@ -36,7 +56,7 @@ function index({ blog }) {
                         <a href="">
                           <img src="http://www.gravatar.com/avatar/021e64775176cc4c7018e5e867f17de2?s=250&amp;d=mm&amp;r=x" style={{ width: "2rem", borderRadius: "50%", marginRight: ".5rem" }} />
                         </a>
-                        <time className="post-date" dateTime="2021-05-02">May 02, 2021</time>
+                        <time className="post-date" dateTime="2021-05-02">{Dateit(date)}</time>
                         <div className="l"></div>
                         <div className="read-time">{readTime} read</div>
                         <div className="l"></div>

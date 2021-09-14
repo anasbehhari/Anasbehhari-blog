@@ -14,14 +14,6 @@ const BlogSchema = new mongoose.Schema({
     type: String,
     default:"0"
   },
-  likes: {
-    type: String,
-    default:"0"
-  },
-  dislikes: {
-    type: String,
-    default:"0"
-  },
   readTime: {
     type: String,
     required: true,
@@ -33,6 +25,10 @@ const BlogSchema = new mongoose.Schema({
   Tags : {
       type:Array,
       required: true,
+  },
+  image : {
+    type: String,
+    required: true, 
   }
   ,
   creationDate: {
