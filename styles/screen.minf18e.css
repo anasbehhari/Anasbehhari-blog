@@ -4014,3 +4014,30 @@ a {
 .current-clr-fill {
   fill: currentColor;
 }
+.hidden {
+  display: none;
+}
+
+.lop {
+  width: fit-content !important;
+  transition: .5s all !important;
+}
+
+
+.sucbtn {
+  background-color: var(--c-success-main) !important;
+}
+.errcbtn {
+  background-color: var(--c-error-dark) !important;
+}
+
+@media screen and (max-width: 767px) {
+.post-card .post-img-wrap.ct {
+    width: 100%;
+    height: 100%;
+    padding-top: 0 !important;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    min-height: 330px;
+}
+}

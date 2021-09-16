@@ -1,14 +1,15 @@
 const axios = require('axios');
 import Head from 'next/head'
 import Link from 'next/link'
-import replaceAll from '../utils/replaceAll';
-import Dateit from '../utils/Dateit';
+import StaticFunction from '../utils/StaticFunction';
+import Subscribe from './components/Subscribe';
+import NFD from "../pages/404";
 const index = ({ data, error }) => {
-    console.log(data);
-    return (
+    if(!error){
+         return (
         <>
             <Head>
-                <title>Anas Behhari | blogging website </title>
+                <title>welcome to Anas Behhari | blogging website {new Date().getFullYear()-1 +"-"+ new Date().getFullYear()} </title>
             </Head>
             <section className="home-cover-area">
                 <div className="container">
@@ -94,10 +95,10 @@ const index = ({ data, error }) => {
                             <h2 className="h4 section-title"><span>Most Popular posts</span></h2>
                             {data.popular.map(pop => (
                                 <article className="post-card flex" key={pop.title}>
-                                    <a href={"/blog/" + pop.title} className="post-img-wrap">
-                                        <img className="post-img" loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
+                                    <Link href={"/blog/" + pop.title} className="post-img-wrap" passHref>
+                                        <img className="post-img-wrap ct" style={{objectFit:"cover !important",cursor:"pointer"}} loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
                                             src={pop.image} alt={pop.title} />
-                                    </a>
+                                    </Link>
                                     <div className="post-info-wrap">
                                         <div className="flex post-top-meta">
                                             <div className="tag-wrap">
@@ -111,14 +112,14 @@ const index = ({ data, error }) => {
                                         </div>
                                         <h2 className="h3 post-title">
                                             <Link href={"/blog/" + pop.title}>
-                                                {replaceAll(pop.title, "-", " ")}
+                                                {StaticFunction.replaceAll(pop.title, "-", " ")}
                                             </Link>
                                         </h2>
                                         <div className="post-excerpt">
                                             {pop.brief}
                                         </div>
                                         <div className="post-meta">
-                                            <time className="post-date" dateTime="2021-05-02">{Dateit(new Date(pop.creationDate))}</time>
+                                            <time className="post-date" dateTime={StaticFunction.Dateit(new Date(pop.creationDate))}>{StaticFunction.Dateit(new Date(pop.creationDate))}</time>
                                             <span className="read-time">{pop.readTime} read</span>
                                             <span className="visibility">Public</span>
                                             &nbsp;
@@ -149,10 +150,10 @@ const index = ({ data, error }) => {
                             <h2 className="h4 section-title"><span>Latest posts</span></h2>
                             {data.latest.map(lat => (
                                 <article className="post-card flex" key={lat.title}>
-                                    <a href={"/blog/" + lat.title} className="post-img-wrap">
-                                        <img className="post-img" loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
+                                    <Link href={"/blog/" + lat.title} className="post-img-wrap" passHref>
+                                        <img className="post-img-wrap ct" style={{objectFit:"cover !important",cursor:"pointer"}} loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
                                             src={lat.image} alt={lat.title} />
-                                    </a>
+                                    </Link>
                                     <div className="post-info-wrap">
                                         <div className="flex post-top-meta">
                                             <div className="tag-wrap">
@@ -166,14 +167,14 @@ const index = ({ data, error }) => {
                                         </div>
                                         <h2 className="h3 post-title">
                                             <Link href={"/blog/" + lat.title}>
-                                                {replaceAll(lat.title, "-", " ")}
+                                                {StaticFunction.replaceAll(lat.title, "-", " ")}
                                             </Link>
                                         </h2>
                                         <div className="post-excerpt">
                                             {lat.brief}
                                         </div>
                                         <div className="post-meta">
-                                            <time className="post-date" dateTime="2021-05-02">{Dateit(new Date(lat.creationDate))}</time>
+                                            <time className="post-date" dateTime="2021-05-02">{StaticFunction.Dateit(new Date(lat.creationDate))}</time>
                                             <span className="read-time">{lat.readTime} read</span>
                                             <span className="visibility">Public</span>
                                             &nbsp;
@@ -212,56 +213,22 @@ const index = ({ data, error }) => {
                                     <span>Show more blogs</span>
                                 </button>
                             </Link>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <section className="email-subs">
-                <div className="container">
-                    <div className="email-subs-wrap text-center">
-                        <h2 className="h1 email-subs-section-title">Subscribe to newsletter</h2>
-                        <div className="email-subs-section-description">
-                            Stay up to date! Get all the latest posts delivered straight to
-                            your inbox.
-                        </div>
-                        <div className="form-wrap">
-                            <form className="subscribe-form text-left" data-members-form="subscribe">
-                                <div className="form-field-wrap field-group-inline">
-                                    <label htmlFor="name" className="sr-only">Name</label>
-                                    <input data-members-name type="text" className="name form-field input-field" id="name" placeholder="Your name" required autoComplete="off" />
-                                    <label htmlFor="email" className="sr-only">Email</label>
-                                    <input data-members-email type="email" className="email form-field input-field" id="email" placeholder="Your email address" required autoComplete="off" />
-                                    <button className="btn form-field" type="submit">
-                                        <span>Subscribe</span>
-                                    </button>
-                                </div>
-                                <div className="message-container">
-                                    <div className="notification success form-notification">
-                                        <a className="notification-close" aria-label="close notification"><span className="close-icon"><svg>
-                                            <use xlinkHref="#i-close" />
-                                        </svg></span></a>
-                                        <strong>Great!</strong> Check your inbox and click the link
-                                        to confirm your subscription.
-                                    </div>
-                                    <div className="notification error form-notification">
-                                        <a className="notification-close" aria-label="close notification"><span className="close-icon"><svg>
-                                            <use xlinkHref="#i-close" />
-                                        </svg></span></a>
-                                        <strong>Error!</strong> Please enter a valid email address!
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
+            <Subscribe/>
+          </>
     );
+    }
+    else {
+        return <NFD  />
+    }
+   
 }
 index.getInitialProps = async ctx => {
     try {
-        const res = await axios.get('http://localhost:3000/api/index');
+        const res = await axios.get('http://localhost:3000/api/blogs/lts-pop');
         const data = res.data;
         return { data };
     } catch (error) {

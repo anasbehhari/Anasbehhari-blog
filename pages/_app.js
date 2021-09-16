@@ -11,6 +11,7 @@ function MyApp({ Component,pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
         <meta name="description" content="An Front-End web developer From Morocco 🇲🇦 and I love billards 🎱 & snooker . On this site I write about my learning and experience." />
         <link rel="canonical" href="index.html" />

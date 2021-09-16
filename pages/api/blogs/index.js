@@ -2,19 +2,34 @@ import connectDb from "../../../utils/Dbconn";
 import Blog from "../../../models/Blog";
 connectDb();
 export default async (req, res) => {
-  const { method } = req;
+  const { method, query } = req;
   switch (method) {
     case "GET":
-      const Blogs = await Blog.find({});
-      try {
-        if (Blogs.length != 0) {
-          res.json(Blogs);
-        } else {
-          res.json({ success: true, message: "Empty collection !" });
+      if (query.max && query.offset) {
+        const Blogs = await Blog.find({}).skip(parseInt(query.offset)).limit(parseInt(query.max));
+        try {
+          if (Blogs.length != 0) {
+            res.json(Blogs);
+          } else {
+            res.json({blogs:0,success:true});
+          }
+        } catch (error) {
+          res.json(error);
         }
-      } catch (error) {
-        res.json(error);
       }
+      else {
+        const Blogs = await Blog.find({});
+        try {
+          if (Blogs.length != 0) {
+            res.json(Blogs);
+          } else {
+            res.json({ success: true, message: "Empty collection !" });
+          }
+        } catch (error) {
+          res.json(error);
+        }
+      }
+
       break;
     case "POST":
       try {
