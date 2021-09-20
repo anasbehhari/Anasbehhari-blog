@@ -11,8 +11,8 @@ const BlogSchema = new mongoose.Schema({
     required: true,
   },
   views: {
-    type: String,
-    default:"0"
+    type: Number,
+    default:0
   },
   readTime: {
     type: String,

@@ -5,13 +5,25 @@ export default async (req, res) => {
   const { method, query } = req;
   switch (method) {
     case "GET":
-      if (query.max && query.offset) {
+      if (query.max && query.offset && !query.tag) {
         const Blogs = await Blog.find({}).skip(parseInt(query.offset)).limit(parseInt(query.max));
         try {
           if (Blogs.length != 0) {
             res.json(Blogs);
           } else {
-            res.json({blogs:0,success:true});
+            res.json({ blogs: 0, success: true });
+          }
+        } catch (error) {
+          res.json(error);
+        }
+      }
+      else if (query.max && query.offset && query.tag) {
+        const Blogs = await Blog.find({Tags:query.tag}).skip(parseInt(query.offset)).limit(parseInt(query.max));
+        try {
+          if (Blogs.length != 0) {
+            res.json(Blogs);
+          } else {
+            res.json({ blogs: 0, success: true });
           }
         } catch (error) {
           res.json(error);

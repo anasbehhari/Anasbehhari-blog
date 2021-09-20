@@ -11,9 +11,10 @@ const connectDb = async () => {
   try {
     const dbConnection = await mongoose.connect(DB_URI);
     mongoose.set("useNewUrlParser", true);
-    mongoose.set("useFindAndModify", false);
+    mongoose.set("useFindAndModify", true);
     mongoose.set("useCreateIndex", true);
-    mongoose.set("useUnifiedTopology",true);
+    mongoose.set("useUnifiedTopology", true);
+    mongoose.set('useCreateIndex', true);
     connection.isConnected = dbConnection.connections[0].readyState;
   } catch (err) {
     logger.error(`error connecting to db ${err.message || err}`);

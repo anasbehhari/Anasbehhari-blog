@@ -1,13 +1,13 @@
 import connectDb from "../../../utils/Dbconn";
 import Tag from "../../../models/Tag";
-import { parseBody } from "next/dist/next-server/server/api-utils";
 connectDb();
 export default async (req, res) => {
-  const { method } = req;
+  const { method, query,connection } = req;
+  console.log(connection.remoteAddress);
   switch (method) {
     case "GET":
-      if(req.query.max) {
-        const tags = await Tag.find({}).limit(parseInt(req.query.max));
+      if (query.max) {
+        const tags = await Tag.find({}).limit(parseInt(query.max));
         try {
           if (tags.length != 0) {
             res.json(tags);
@@ -18,6 +18,7 @@ export default async (req, res) => {
           res.json(error);
         }
       }
+      
       else {
         const tags = await Tag.find({});
         try {
@@ -30,7 +31,7 @@ export default async (req, res) => {
           res.json(error);
         }
       }
-     
+
       break;
     case "POST":
       try {

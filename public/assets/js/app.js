@@ -24,7 +24,7 @@ function setSysPrefColor() {
 }
 function setColorScheme(scheme) {
     if (scheme == "dark") {
-        document.documentElement.setAttribute("data-theme","dark");
+        document.documentElement.setAttribute("data-theme", "dark");
     } else {
         document.documentElement.removeAttribute("data-theme");
     }
@@ -33,16 +33,17 @@ document.documentElement.classList.add('js');
 window.onload = function () {
     setTimeout(function () {
         document.body.classList.add('loaded');
-    },5000);
+    }, 5000);
 }
 let search = document.querySelector(".nav-icon span");
 let closeSearch = document.getElementById("search-close")
-search.onclick = () => {
+search.onClick = () => {
     document.querySelector(".search-popup").classList.toggle("visible")
 }
-closeSearch.onclick = () => {
+closeSearch.onClick = () => {
     document.querySelector(".search-popup").classList.toggle("visible")
 }
+
 window.onkeyup = event => {
     if (event.keyCode === 27 && document.querySelector(".search-popup").classList.contains("visible")) {
         document.querySelector(".search-popup").classList.toggle("visible")

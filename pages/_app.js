@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import '../styles/screen.minf18e.css'
+import Search from './components/Search'
 
 function MyApp({ Component,pageProps }) {
   return (
@@ -72,37 +73,7 @@ function MyApp({ Component,pageProps }) {
         </>
         <Footer />
       </div>
-      <div className="search-popup js-search-popup">
-        <div className="search-popup-bg" />
-        <a className="close-button" id="search-close" aria-label="Close search">
-          <svg>
-            <use xlinkHref="#i-close" />
-          </svg>
-        </a>
-        <div className="popup-inner">
-          <div className="inner-container">
-            <form className="search-form" id="search-form">
-              <div className="search-form-box flex">
-                <input type="text" className="search-input" placeholder="Type to search" id="search-input" aria-label="Type to search" role="searchbox" />
-              </div>
-            </form>
-            <div className="search-close-note">Press ESC to close.</div>
-            <div className="search-result" id="search-results" />
-            <div className="suggested-tags tag-wrap" id="suggested-tags">
-              <h2 className="h6">See posts by Popular tags</h2>
-              <div className="tag-list">
-                <a href="tag/inspiration/index.html" style={{ background: '#9d6805' }}>Inspiration</a>
-                <a href="tag/lifestyle/index.html">Lifestyle</a>
-                <a href="tag/nature/index.html">Nature</a>
-                <a href="tag/health/index.html">Health</a>
-                <a href="tag/travel/index.html" style={{ background: '#e10689' }}>Travel</a>
-                <a href="tag/food/index.html" style={{ background: '#b43adf' }}>Food</a>
-                <a href="tag/technology/index.html" style={{ background: '#2d841f' }}>Technology</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Search />
       <script src="/assets/js/app.js"></script>
       <script src="/assets/js/app.bundle.minf18e.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>

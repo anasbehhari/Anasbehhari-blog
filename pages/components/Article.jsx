@@ -10,8 +10,11 @@ const Article = props => {
             <div className="post-info-wrap">
                 <div className="flex post-top-meta">
                     <div className="tag-wrap">
-                        {props.blog.Tags.map(tag => (<Link key={Math.random()} style={{ background: `${StaticFunction.randomClr()} !important` }} href={"/tag/" + tag}>{tag}</Link>))}
+                        {props.blog.Tags.map(tag => (<Link key={Math.random()} style={{ backgroundColor: `${tag.color}`}} href={"/tag/" + tag}>{tag}</Link>))}
                     </div>
+                    {
+                        props.star==true ? <div className="featured-icon" aria-label="Featured post icon"> <svg> <use xlinkHref="#i-star" /> </svg> </div> : ""
+                    }
 
                 </div>
                 <h2 className="h3 post-title">

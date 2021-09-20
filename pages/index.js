@@ -4,6 +4,7 @@ import Link from 'next/link'
 import StaticFunction from '../utils/StaticFunction';
 import Subscribe from './components/Subscribe';
 import NFD from "../pages/404";
+import Article from './components/Article';
 const index = ({ data, error }) => {
     if(!error){
          return (
@@ -33,10 +34,10 @@ const index = ({ data, error }) => {
                                 </div>
                                 <form className="members-form cover-subscribe-form text-left" data-members-form="subscribe">
                                     <div className="form-field-wrap field-group-inline">
-                                        <label htmlFor="header-form-email" className="sr-only">Email</label>
-                                        <input data-members-email type="email" className="email form-field input-field" id="header-form-email" placeholder="Your email address" required autoComplete="off" />
+                                        <label htmlFor="header-form-words" className="sr-only">words</label>
+                                        <input data-members-words type="text" className="words form-field input-field" id="header-form-words" placeholder="Your Have some words ? ...Type Here" required autoComplete="off" />
                                         <button className="btn form-field" type="submit">
-                                            <span>Subscribe</span>
+                                            <span>Send now</span>
                                         </button>
                                     </div>
                                     <div className="message-container">
@@ -94,113 +95,12 @@ const index = ({ data, error }) => {
                         <div className="col-lg-10 offset-lg-1 js-post-list-wrap">
                             <h2 className="h4 section-title"><span>Most Popular posts</span></h2>
                             {data.popular.map(pop => (
-                                <article className="post-card flex" key={pop.title}>
-                                    <Link href={"/blog/" + pop.title} className="post-img-wrap" passHref>
-                                        <img className="post-img-wrap ct" style={{objectFit:"cover !important",cursor:"pointer"}} loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
-                                            src={pop.image} alt={pop.title} />
-                                    </Link>
-                                    <div className="post-info-wrap">
-                                        <div className="flex post-top-meta">
-                                            <div className="tag-wrap">
-                                                {pop.Tags.map(tag => (<a key={tag} href={"/tag/" + tag}>{tag}</a>))}
-                                            </div>
-                                            <div className="featured-icon" aria-label="Featured post icon">
-                                                <svg>
-                                                    <use xlinkHref="#i-star" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h2 className="h3 post-title">
-                                            <Link href={"/blog/" + pop.title}>
-                                                {StaticFunction.replaceAll(pop.title, "-", " ")}
-                                            </Link>
-                                        </h2>
-                                        <div className="post-excerpt">
-                                            {pop.brief}
-                                        </div>
-                                        <div className="post-meta">
-                                            <time className="post-date" dateTime={StaticFunction.Dateit(new Date(pop.creationDate))}>{StaticFunction.Dateit(new Date(pop.creationDate))}</time>
-                                            <span className="read-time">{pop.readTime} read</span>
-                                            <span className="visibility">Public</span>
-                                            &nbsp;
-                                            <div className="seen">
-                                                <svg
-                                                    version="1.1"
-                                                    id="Capa_1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                    x="0px"
-                                                    y="0px"
-                                                    viewBox="0 0 16 16"
-                                                    xmlSpace="preserve"
-                                                >
-                                                    <g>
-                                                        <circle className="current-clr-fill" cx={8} cy="7.99" r={1} />
-                                                        <path
-                                                            className="current-clr-fill" d="M8,2.981c-5.003,0-8,5.009-8,5.009s2.985,5.029,8,5.029s8-5.029,8-5.029S13.003,2.981,8,2.981z M8,10.99c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S9.657,10.99,8,10.99z" />
-                                                    </g>
-                                                </svg>
-                                                <span>{pop.views}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-
+                              <Article key={pop._id} blog={pop} star={true} />
                             ))}
                             <h2 className="h4 section-title"><span>Latest posts</span></h2>
                             {data.latest.map(lat => (
-                                <article className="post-card flex" key={lat.title}>
-                                    <Link href={"/blog/" + lat.title} className="post-img-wrap" passHref>
-                                        <img className="post-img-wrap ct" style={{objectFit:"cover !important",cursor:"pointer"}} loading="lazy" sizes="(max-width:432px) 400px, (max-width:696px) 600px, (max-width:767px) 671px, 400px"
-                                            src={lat.image} alt={lat.title} />
-                                    </Link>
-                                    <div className="post-info-wrap">
-                                        <div className="flex post-top-meta">
-                                            <div className="tag-wrap">
-                                                {lat.Tags.map(tag => (<a key={tag} href={"/tag/" + tag}>{tag}</a>))}
-                                            </div>
-                                            <div className="featured-icon" aria-label="Featured post icon">
-                                                <svg>
-                                                    <use xlinkHref="#i-star" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h2 className="h3 post-title">
-                                            <Link href={"/blog/" + lat.title}>
-                                                {StaticFunction.replaceAll(lat.title, "-", " ")}
-                                            </Link>
-                                        </h2>
-                                        <div className="post-excerpt">
-                                            {lat.brief}
-                                        </div>
-                                        <div className="post-meta">
-                                            <time className="post-date" dateTime="2021-05-02">{StaticFunction.Dateit(new Date(lat.creationDate))}</time>
-                                            <span className="read-time">{lat.readTime} read</span>
-                                            <span className="visibility">Public</span>
-                                            &nbsp;
-                                            <div className="seen">
-                                                <svg
-                                                    version="1.1"
-                                                    id="Capa_1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                                                    x="0px"
-                                                    y="0px"
-                                                    viewBox="0 0 16 16"
-                                                    xmlSpace="preserve"
-                                                >
-                                                    <g>
-                                                        <circle className="current-clr-fill" cx={8} cy="7.99" r={1} />
-                                                        <path
-                                                            className="current-clr-fill" d="M8,2.981c-5.003,0-8,5.009-8,5.009s2.985,5.029,8,5.029s8-5.029,8-5.029S13.003,2.981,8,2.981z M8,10.99c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S9.657,10.99,8,10.99z" />
-                                                    </g>
-                                                </svg>
-                                                <span>{lat.views}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-
+                              <Article key={lat._id} blog={lat}  />
+                           
                             ))}
                         </div>
                     </div>

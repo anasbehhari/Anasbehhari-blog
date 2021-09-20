@@ -1,7 +1,6 @@
 import StaticFunction from "../../utils/StaticFunction";
 import axios from "axios";
 const subscribe = () => {
-    const password = process.env.password;
     const handleSubscription = function (e) {
         e.preventDefault();
         let name = e.target[0].value;
@@ -14,7 +13,7 @@ const subscribe = () => {
         span.innerHTML = ""
         if (StaticFunction.isvalidEmail(email) && name != "") {
             setTimeout(() => {
-                axios.post('http://localhost:3000/api/subscriber', {
+                axios.post('/api/subscriber', {
                     name,
                     email
                 })
@@ -22,22 +21,30 @@ const subscribe = () => {
                         button.classList.remove("spinning")
                         if (response.data.success) {
                             spin.classList.toggle("hidden");
-                            span.innerHTML = "Subscribed!"
+                            span.innerHTML = "Subscribed"
                             button.classList.add("sucbtn")
-                            setTimeout(() => button.classList.remove("sucbtn"), 2000)
+                            setTimeout(() => {
+                                button.classList.remove("sucbtn");
+                                span.innerHTML = "Subscribe"
+                            }, 2000)
                         }
                         else if (!response.data.success && response.status == 200) {
                             spin.classList.toggle("hidden");
 
                             button.classList.add("errcbtn")
-                            span.innerHTML = "already Sub! "
-                            setTimeout(() => button.classList.remove("errcbtn"), 2000)
+                            span.innerHTML = "Already Subs"
+                            setTimeout(() => {
+                                button.classList.remove("errcbtn")
+                                span.innerHTML = "Subscribe"
+
+                            }, 2000)
                         }
                     })
                     .catch(function (error) {
                         spin.classList.toggle("hidden");
                         button.classList.add("errcbtn")
                         button.classList.remove("spinning")
+                        console.log(error);
                         button.innerHTML = "ooops!"
                         setTimeout(() => button.classList.remove("errcbtn"), 1500)
 
