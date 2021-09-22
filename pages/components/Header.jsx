@@ -4,12 +4,17 @@ const Header = () => {
     <header className="site-header">
       <div className="container header-inner justify-space-between">
         <div className="header-logo flex">
-          <a href="/" className="logo-img theme-light-logo">
-            <img src="/assets/images/anasbehhari-logo.png" alt="Arun Roy" />
-          </a>
-          <a href="/" className="logo-img theme-dark-logo">
-            <img src="/assets/images/anasbehhari-logo.png" alt="Arun Roy" />
-          </a>
+          <Link href="/">
+            <a  className="logo-img theme-light-logo">
+              <img src="/assets/images/anasbehhari-logo.png" alt="Anas Behhari" />
+            </a>
+          </Link>
+          <Link href="/">
+            <a  className="logo-img theme-dark-logo">
+              <img src="/assets/images/anasbehhari-logo.png" alt="Anas Behhari" />
+            </a>
+          </Link>
+          
         </div>
         <input
           id="mobile-menu-toggle"
@@ -75,6 +80,7 @@ const Header = () => {
                   className="btn btn-menuitem"
                   href="https://twitch.tv/anasbehhari"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Twitch Tv
                   <svg
@@ -90,7 +96,8 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <div className="icon-items-wrap flex">
+          <ul className="icon-items-wrap flex">
+            <li>
             <a
               className="nav-icon search-icon flex js-search-button"
               aria-label="Open search"
@@ -101,6 +108,9 @@ const Header = () => {
                 </svg>
               </span>
             </a>
+            
+            </li>
+            <li>
             <a
               className="nav-icon theme-icon flex js-toggle-dark-light"
               aria-label="Toggle theme"
@@ -118,7 +128,9 @@ const Header = () => {
                 </span>
               </div>
             </a>
-          </div>
+          
+            </li>
+           </ul>
         </div>
       </div>
     </header>

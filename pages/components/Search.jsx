@@ -20,13 +20,18 @@ const Search = () => {
                     <div className="suggested-tags tag-wrap" id="suggested-tags">
                         <h2 className="h6">See posts by Popular tags</h2>
                         <div className="tag-list">
-                            <Link href="/tag/inspiration" style={{ background: '#9d6805' }}>Inspiration</Link>
-                            <a href="/tag/lifestyle">Lifestyle</a>
-                            <a href="/tag/nature">Nature</a>
-                            <a href="/tag/health">Health</a>
-                            <a href="/tag/travel" style={{ background: '#e10689' }}>Travel</a>
-                            <a href="/tag/food" style={{ background: '#b43adf' }}>Food</a>
-                            <a href="/tag/technology" style={{ background: '#2d841f' }}>Technology</a>
+                            <Link href="/tag/coding" >
+                                <a>Coding</a>
+                            </Link>
+                            <Link href="/tag/programming" >
+                                <a  style={{ background: '#e10689' }}>Programming</a>
+                            </Link>
+                            <Link href="/tag/life" >
+                                <a style={{ background: '#b43adf' }}>Life</a>
+                            </Link>
+                            <Link href="/tag/technology" >
+                                <a style={{ background: '#2d841f' }}>Technology</a>
+                            </Link>
                         </div>
                     </div>
                 </div>

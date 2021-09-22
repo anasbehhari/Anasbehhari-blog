@@ -44,7 +44,6 @@ const subscribe = () => {
                         spin.classList.toggle("hidden");
                         button.classList.add("errcbtn")
                         button.classList.remove("spinning")
-                        console.log(error);
                         button.innerHTML = "ooops!"
                         setTimeout(() => button.classList.remove("errcbtn"), 1500)
 

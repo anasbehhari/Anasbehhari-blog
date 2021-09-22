@@ -2,7 +2,7 @@ import connectDb from "../../../utils/Dbconn";
 import Subscriber from "../../../models/Subscriber";
 connectDb();
 const password = process.env.password;
-export default async (req, res) => {
+export default async function sub(req, res) {
     const { method, query } = req;
     switch (method) {
         case "GET":

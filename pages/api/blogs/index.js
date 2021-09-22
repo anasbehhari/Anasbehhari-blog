@@ -1,7 +1,7 @@
 import connectDb from "../../../utils/Dbconn";
 import Blog from "../../../models/Blog";
 connectDb();
-export default async (req, res) => {
+export default async function titG(req, res) {
   const { method, query } = req;
   switch (method) {
     case "GET":

@@ -3,7 +3,7 @@ import Tag from "../../../../models/Tag";
 import Blog from "../../../../models/Blog";
 
 connectDb();
-export default async (req, res) => {
+export default async function tgn(req, res) {
   const { query, method } = req;
    if (method == "GET"  && query.name && !query.blogs && !query.count) {
     const currentTag = await Tag.find({ name: query.name });

@@ -90,6 +90,7 @@ const Footer = props => {
                       <li className="nav-link">
                         <Link
                           target="_blank"
+                          rel="noreferrer"
                           href="https://lionzcss.vercel.app"
                         >
                           Lionzcss
@@ -98,7 +99,8 @@ const Footer = props => {
                       <li className="nav-link">
                         <Link
                           target="_blank"
-                          href="htttps://save-it-2021.herokuapp.com"
+                          rel="noreferrer"
+                          href="https://save-it-2021.herokuapp.com"
                         >
                           Save.it
                         </Link>
@@ -117,6 +119,7 @@ const Footer = props => {
               <a
                 href="https://twitter.com/Anas21358753"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="twitter link"
               >
                 <svg
@@ -131,6 +134,7 @@ const Footer = props => {
               <a
                 href="https://www.facebook.com/gbjsolution"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="facebook link"
               >
                 <svg
@@ -145,6 +149,7 @@ const Footer = props => {
               <a
                 href="https://instagram.com/anas_behhari"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="instagram link"
               >
                 <svg

@@ -1,7 +1,7 @@
 import connectDb from "../../../utils/Dbconn";
 import Blog from "../../../models/Blog";
 connectDb();
-export default async (req, res) => {
+export default async function blogP(req, res) {
     const { method } = req;
     if (method == "GET") {
         const Blogs = await Blog.find().sort({views:-1}).limit(3);

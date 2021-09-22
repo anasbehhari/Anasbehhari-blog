@@ -1,9 +1,8 @@
 import connectDb from "../../../utils/Dbconn";
 import Tag from "../../../models/Tag";
 connectDb();
-export default async (req, res) => {
+export default async function tags(req, res) {
   const { method, query,connection } = req;
-  console.log(connection.remoteAddress);
   switch (method) {
     case "GET":
       if (query.max) {

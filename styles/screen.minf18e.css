@@ -469,6 +469,10 @@ html {
 }
 
 @media screen and (min-width: 768px) {
+    .search-icon {
+        flex-basis: 0%  !important;
+    }
+    
     .col-md-1 {
         flex: 0 0 8.33333%;
         max-width: 8.33333%;
@@ -1746,8 +1750,11 @@ pre[class*="language-"] {
 
 .icon-items-wrap {
     align-items: center;
+    margin-left: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
 }
-
 .nav-icon {
     color: var(--c-text-main);
     margin: 0 12px;
@@ -1769,7 +1776,7 @@ pre[class*="language-"] {
 }
 
 .nav-icon:first-child {
-    margin-left: 32px;
+    margin-left: 15px;
 }
 
 .nav-icon:last-child {
@@ -2017,9 +2024,11 @@ pre[class*="language-"] {
         transform: translate3d(0, 0, 0);
     }
     .icon-items-wrap {
-        margin: 0 0 0 16px;
+        margin: 0 0 0 0;
         flex: 1 0 100%;
         width: 148px;
+    gap: 1rem;
+
     }
     .nav-icon:first-child {
         margin-left: 0;
@@ -2045,8 +2054,10 @@ pre[class*="language-"] {
     }
     .search-icon,
     .theme-icon {
-        flex-basis: 50%;
         margin: 16px 0;
+    }
+    .theme-icon {
+        margin-left: 20px;
     }
 }
 
@@ -3141,6 +3152,7 @@ pre[class*="language-"] {
         flex-basis: 32%;
         min-height: 144px;
     }
+  
 }
 
 .share-wrap {
@@ -3414,6 +3426,9 @@ pre[class*="language-"] {
     .paid-membership-cta .price sup {
         top: -6px;
         font-size: 18px;
+    }
+    .post-content{
+        font-size: .9rem !important;
     }
 }
 
@@ -3778,10 +3793,13 @@ pre[class*="language-"] {
     margin-bottom: 0.5rem;
     border-bottom: 2px solid transparent;
     transition: border-color 250ms;
+    text-transform: capitalize !important;
 }
 
 .tag-card:hover .tag-name {
     border-color: var(--c-text-main);
+    text-transform: capitalize !important;
+
 }
 
 .tag-card .post-count {
@@ -4062,6 +4080,10 @@ pre[class*="language-"] {
     margin-bottom: 5rem;
     border-radius: var(--size-2);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
 }
 
 .archive-cover .cover-image {
@@ -4173,6 +4195,7 @@ pre[class*="language-"] {
 
 .archive-cover-inner .tag-info-wrap .tag-name {
     margin-top: 0;
+    text-transform: capitalize !important;
 }
 
 .archive-cover-inner .tag-info-wrap .tag-description {
@@ -4643,10 +4666,7 @@ a {
 }
 
 @media (max-width:600px) {
-    .search-icon {
-        flex-basis: 0%;
-        margin-right: 15px;
-    }
+    
     h1 {
         font-size: 1.7rem !important;
     }
