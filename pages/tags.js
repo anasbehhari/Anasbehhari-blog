@@ -1,7 +1,6 @@
-const axios = require("axios");
 import Head from "next/head";
 import Link from "next/link";
-import NFD from "../pages/404";
+import Page_404 from "./404";
 import StaticFunction from "../utils/StaticFunction";
 const tags = ({ data, error }) => {
   if (!error) {
@@ -26,7 +25,7 @@ const tags = ({ data, error }) => {
             </div>
             <div className="row">
               {data.map((el) => (
-                <Link href={`/tag/${el.name}`} key={el.name}>
+                <Link passHref href={`/tag/${el.name}`} key={el.name}>
                   <div className="col-xl-4 col-lg-6 col-md-6 tag-card-wrap">
                     <a className="tag-card flex">
                       <div className="tag-info-wrap">
@@ -45,7 +44,7 @@ const tags = ({ data, error }) => {
       </>
     );
   } else {
-    return <NFD />;
+    return <Page_404 />;
   }
 };
 

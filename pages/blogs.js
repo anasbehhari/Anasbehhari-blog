@@ -1,21 +1,21 @@
 import axios from "axios";
 import Head from "next/head";
 import Article from "./components/Article";
-import NFD from "../pages/404";
+import Page_404 from "./404";
 import StaticFunction from "../utils/StaticFunction";
 import { useState } from "react";
-const blogs = ({ Blogs, error }) => {
+const Blogs = ({ blogs, error }) => {
   const [BlogList, setBlogList] = useState([]);
   const handleMorePosts = () => {
     let offset = document.querySelectorAll(".blog-post-tag").length;
-    if (offset == Blogs.length) {
+    if (offset == blogs.length) {
       axios
         .get("http://localhost:3000/api/blogs?offset=" + offset + "&max=3")
         .then((res) => {
           if (res.data.length >= 1 && !res.data.blogs) {
             res.data.forEach((blog) => {
               setBlogList(
-                BlogList.concat(<Article key={BlogList.length} blog={blog} />)
+                BlogList.concat(<Article key={BlogList.length} star={false} blog={blog} />)
               );
             });
           }
@@ -49,8 +49,8 @@ const blogs = ({ Blogs, error }) => {
                 <h2 className="h4 section-title">
                   <span> Latest posts </span>
                 </h2>
-                {Blogs.map((blog) => (
-                  <Article blog={blog} key={blog._id} />
+                {blogs.map((blog) => (
+                  <Article blog={blog} key={blog._id} star={false} />
                 ))}
                 {BlogList}
               </div>
@@ -60,7 +60,7 @@ const blogs = ({ Blogs, error }) => {
         <div className="row">
           <div className="col">
             <div className="pagination-wrap text-center">
-              {Blogs.length > 5 ? (
+              {blogs.length > 5 ? (
                 <button
                   className="btn"
                   id="load-more-posts"
@@ -77,16 +77,16 @@ const blogs = ({ Blogs, error }) => {
       </>
     );
   } else {
-    return <NFD error={error} />;
+    return <Page_404 />;
   }
 };
 export async function getStaticProps() {
   const res = await fetch(`http://localhost:3000/api/blogs?offset=0&max=5`);
-  const Blogs = await res.json();
-  if (Blogs) {
+  const blogs = await res.json();
+  if (blogs) {
     return {
       props: {
-        Blogs,
+        blogs,
       },
     };
   }
@@ -96,4 +96,4 @@ export async function getStaticProps() {
     },
   };
 }
-export default blogs;
+export default Blogs;

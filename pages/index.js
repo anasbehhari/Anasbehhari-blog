@@ -1,13 +1,11 @@
-const axios = require('axios');
 import Head from 'next/head'
 import Link from 'next/link'
-import StaticFunction from '../utils/StaticFunction';
 import Subscribe from './components/Subscribe';
-import NFD from "../pages/404";
+import Page_404 from "./404";
 import Article from './components/Article';
 const index = ({ data, error }) => {
     if(error) {
-        return <div>{JSON.stringify(error)}</div>
+        return <Page_404 />
     }
          return (
         <>
@@ -101,7 +99,7 @@ const index = ({ data, error }) => {
                             ))}
                             <h2 className="h4 section-title"><span>Latest posts</span></h2>
                             {data.latest.map(lat => (
-                              <Article key={lat._id} blog={lat}  />
+                              <Article key={lat._id} blog={lat} star={false}  />
                            
                             ))}
                         </div>

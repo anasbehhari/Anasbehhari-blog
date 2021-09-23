@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Page_404 = ({props}) => {
+const Page_404 = () => {
     return (
         <div className="main">
             <div className="error-content-wrap text-center">
@@ -10,7 +10,7 @@ const Page_404 = ({props}) => {
                     Maybe the URL is incorrect, or the page no longer exist.
                 </p>
                 <Link href="/" className="btn">
-                    Return to home page {props.error ? "hello" : "kkk"}
+                    Return to home page 
                 </Link>
             </div>
         </div>

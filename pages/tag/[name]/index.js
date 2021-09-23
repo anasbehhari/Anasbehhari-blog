@@ -1,9 +1,9 @@
 import axios from "axios";
-import NFD from "../../404";
+import Page_404 from "../../404";
 import Head from "next/head";
 import Article from "../../components/Article";
 import { useState } from "react";
-const index = ({ tag, error }) => {
+const Index = ({ tag, error }) => {
   const [BlogListTags, setBlogListTags] = useState([]);
   let secure = 0;
   const handleMorePosts = (event) => {
@@ -23,7 +23,7 @@ const index = ({ tag, error }) => {
                 BlogListTags.concat(
                   <div className="blog-post-tag" key={Blog._id}>
                     {" "}
-                    <Article blog={blog} />{" "}
+                    <Article blog={blog} star={false} />{" "}
                   </div>
                 )
               );
@@ -78,7 +78,7 @@ const index = ({ tag, error }) => {
             <div className="col-lg-10 offset-lg-1 js-post-list-wrap">
               {tag.Blogs.map((blog) => (
                 <div key={blog._id} className="blog-post-tag">
-                  <Article blog={blog} />
+                  <Article blog={blog} star={false} />
                 </div>
               ))}
               {BlogListTags}
@@ -107,7 +107,7 @@ const index = ({ tag, error }) => {
       </div>
     );
   } else {
-    return <NFD />;
+    return <Page_404 />;
   }
 };
 
@@ -129,4 +129,4 @@ export async function getStaticProps({ params }) {
   return { props: { tag } };
 }
 
-export default index;
+export default Index;
