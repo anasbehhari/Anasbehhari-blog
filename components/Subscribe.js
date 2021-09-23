@@ -1,4 +1,4 @@
-import StaticFunction from "../../utils/StaticFunction";
+import StaticFunction from "../utils/StaticFunction";
 import axios from "axios";
 const subscribe = () => {
     const handleSubscription = function (e) {

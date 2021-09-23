@@ -1,4 +1,4 @@
-import StaticFunction from "../../utils/StaticFunction";
+import StaticFunction from "../utils/StaticFunction";
 import Link from "next/link";
 const Article = props => {
     return (

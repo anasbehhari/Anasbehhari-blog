@@ -1,7 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
-import Article from "./components/Article";
-import Page_404 from "./404";
+import Article from "../components/Article";
+import Page_404 from "../components/404";
 import StaticFunction from "../utils/StaticFunction";
 import { useState } from "react";
 const Blogs = ({ blogs, error }) => {

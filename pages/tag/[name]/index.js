@@ -1,12 +1,12 @@
 import axios from "axios";
-import Page_404 from "../../404";
+import Page_404 from "../../../components/404";
 import Head from "next/head";
-import Article from "../../components/Article";
+import Article from "../../../components/Article";
 import { useState } from "react";
 const Index = ({ tag, error }) => {
   const [BlogListTags, setBlogListTags] = useState([]);
   let secure = 0;
-  const handleMorePosts = (event) => {
+  const handleMorePosts = () => {
     let offset = document.querySelectorAll(".blog-post-tag").length;
     if (secure < 2) {
       axios
@@ -114,11 +114,9 @@ const Index = ({ tag, error }) => {
 export async function getStaticPaths() {
   const res = await fetch("http://localhost:3000/api/tags");
   const tags = await res.json();
-
   const paths = tags.map((tag) => ({
     params: { name: tag.name.toString() },
   }));
-
   return { paths, fallback: false };
 }
 export async function getStaticProps({ params }) {

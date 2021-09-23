@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../styles/screen.minf18e.css";
-import Search from "./components/Search";
-import Script from "next/script";
+import Search from "../components/Search";
 function MyApp({ Component, pageProps }) {
   return (
     <>

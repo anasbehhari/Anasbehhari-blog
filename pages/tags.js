@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Page_404 from "./404";
+import Page_404 from "../components/404";
 import StaticFunction from "../utils/StaticFunction";
 const tags = ({ data, error }) => {
   if (!error) {

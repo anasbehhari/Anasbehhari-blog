@@ -1,8 +1,7 @@
 import Head from "next/head";
-import NFS from "../../components/404";
 import { useEffect } from "react";
 import StaticFunction from "../../../utils/StaticFunction";
-import Subscribe from "../../components/Subscribe";
+import Subscribe from "../../../components/Subscribe";
 function Index({ blog }) {
   let { title, data, date, readTime } = blog;
   date = new Date(date);

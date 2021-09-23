@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Subscribe from './components/Subscribe';
-import Page_404 from "./404";
-import Article from './components/Article';
+import Subscribe from '../components/Subscribe';
+import Page_404 from "../components/404";
+import Article from '../components/Article';
 const index = ({ data, error }) => {
     if(error) {
         return <Page_404 />
