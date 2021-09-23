@@ -29,6 +29,6 @@ export default async function blogLP(req, res) {
         }
     }
     else {
-        res.status(404).json("ERROR 404")
+        res.status(500).json({success:false})
     }
 };

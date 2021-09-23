@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-const Page_404 = (props) => {
+const Custom404 = (props) => {
   return (
     <div className="main">
       <div
@@ -20,4 +19,4 @@ const Page_404 = (props) => {
   );
 };
 
-export default Page_404;
+export default Custom404;

@@ -5,16 +5,21 @@ const Header = () => {
       <div className="container header-inner justify-space-between">
         <div className="header-logo flex">
           <Link href="/">
-            <a  className="logo-img theme-light-logo">
-              <img src="/assets/images/anasbehhari-logo.png" alt="Anas Behhari" />
+            <a className="logo-img theme-light-logo">
+              <img
+                src="/assets/images/anasbehhari-logo.png"
+                alt="Anas Behhari"
+              />
             </a>
           </Link>
           <Link href="/">
-            <a  className="logo-img theme-dark-logo">
-              <img src="/assets/images/anasbehhari-logo.png" alt="Anas Behhari" />
+            <a className="logo-img theme-dark-logo">
+              <img
+                src="/assets/images/anasbehhari-logo.png"
+                alt="Anas Behhari"
+              />
             </a>
           </Link>
-          
         </div>
         <input
           id="mobile-menu-toggle"
@@ -44,9 +49,6 @@ const Header = () => {
               <li className="nav-item" role="menuitem">
                 <Link href="/blogs">Blogs</Link>
               </li>
-              <li className="nav-item" role="menuitem">
-                <Link href="/portfolio">portfolio</Link>
-              </li>
               <li className="submenu-parent">
                 <a href="#">
                   More
@@ -62,12 +64,6 @@ const Header = () => {
                 <ul className="no-style-list">
                   <li className="nav-item" role="menuitem">
                     <Link href="/tags">Tags</Link>
-                  </li>
-                  <li className="nav-item" role="menuitem">
-                    <Link href="/monthly-archive">Monthly archive</Link>
-                  </li>
-                  <li className="nav-item" role="menuitem">
-                    <Link href="/yearly-archive">Yearly archive</Link>
                   </li>
                   <li className="nav-item" role="menuitem">
                     <Link href="/contact">contact</Link>
@@ -98,39 +94,37 @@ const Header = () => {
           </nav>
           <ul className="icon-items-wrap flex">
             <li>
-            <a
-              className="nav-icon search-icon flex js-search-button"
-              aria-label="Open search"
-            >
-              <span>
-                <svg>
-                  <use xlinkHref="#i-search" />
-                </svg>
-              </span>
-            </a>
-            
-            </li>
-            <li>
-            <a
-              className="nav-icon theme-icon flex js-toggle-dark-light"
-              aria-label="Toggle theme"
-            >
-              <div className="toggle-mode flex">
-                <div className="light">
+              <a
+                className="nav-icon search-icon flex js-search-button"
+                aria-label="Open search"
+              >
+                <span>
                   <svg>
-                    <use xlinkHref="#i-sun" />
-                  </svg>
-                </div>
-                <span className="dark">
-                  <svg>
-                    <use xlinkHref="#i-moon" />
+                    <use xlinkHref="#i-search" />
                   </svg>
                 </span>
-              </div>
-            </a>
-          
+              </a>
             </li>
-           </ul>
+            <li>
+              <a
+                className="nav-icon theme-icon flex js-toggle-dark-light"
+                aria-label="Toggle theme"
+              >
+                <div className="toggle-mode flex">
+                  <div className="light">
+                    <svg>
+                      <use xlinkHref="#i-sun" />
+                    </svg>
+                  </div>
+                  <span className="dark">
+                    <svg>
+                      <use xlinkHref="#i-moon" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </header>

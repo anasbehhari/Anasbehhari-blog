@@ -1,5 +1,5 @@
 import Head from "next/head";
-const contact = () => {
+const Contact = () => {
     return (
         <>
             <Head>
@@ -21,7 +21,7 @@ const contact = () => {
                                         or just want to say Hi? Send me a message using below form. I
                                         will get back to you as soon as possible.
                                     </p>
-                                    {/*kg-card-begin: html*/}
+                                    
                                     <form action="https://formspree.io/your@email.com" method="POST">
                                         <input type="text" name="name" placeholder="Full name" />
                                         <input type="email" name="_replyto" placeholder="Email" />
@@ -38,7 +38,7 @@ const contact = () => {
                                             rows={4}
                                         />
                                     </form>
-                                    {/*kg-card-end: html*/}
+                                   
                                 </div>
                             </article>
                         </div>
@@ -49,4 +49,4 @@ const contact = () => {
     );
 }
 
-export default contact;
+export default Contact;

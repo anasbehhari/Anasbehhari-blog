@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Page_404 from "../components/404";
 import StaticFunction from "../utils/StaticFunction";
-const tags = ({ data, error }) => {
+const Tags = ({ data, error }) => {
   if (!error) {
     return (
       <>
@@ -64,4 +64,4 @@ export async function getStaticProps() {
     },
   };
 }
-export default tags;
+export default Tags;

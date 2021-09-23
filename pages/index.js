@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Subscribe from '../components/Subscribe';
 import Page_404 from "../components/404";
 import Article from '../components/Article';
+import Word from '../components/Word';
 const index = ({ data, error }) => {
     if(error) {
         return <Page_404 />
@@ -32,31 +33,7 @@ const index = ({ data, error }) => {
                                     billards 🎱 &amp; snooker . On this site I write about my learning
                                     and experience.
                                 </div>
-                                <form className="members-form cover-subscribe-form text-left" data-members-form="subscribe">
-                                    <div className="form-field-wrap field-group-inline">
-                                        <label htmlFor="header-form-words" className="sr-only">words</label>
-                                        <input data-members-words type="text" className="words form-field input-field" id="header-form-words" placeholder="Your Have some words ? ...Type Here" required autoComplete="off" />
-                                        <button className="btn form-field" type="submit">
-                                            <span>Send now</span>
-                                        </button>
-                                    </div>
-                                    <div className="message-container">
-                                        <div className="notification success form-notification">
-                                            <a className="notification-close" aria-label="close notification"><span className="close-icon"><svg>
-                                                <use xlinkHref="#i-close" />
-                                            </svg></span></a>
-                                            <strong>Great!</strong> Check your inbox and click the
-                                            link to confirm your subscription
-                                        </div>
-                                        <div className="notification error form-notification">
-                                            <a className="notification-close" aria-label="close notification"><span className="close-icon"><svg>
-                                                <use xlinkHref="#i-close" />
-                                            </svg></span></a>
-                                            <strong>Error!</strong> Please enter a valid email
-                                            address!
-                                        </div>
-                                    </div>
-                                </form>
+                                <Word />
                                 <div className="social-links-wrap flex">
                                     <span className="title">Follow:</span>
                                     <div className="social-links flex">
