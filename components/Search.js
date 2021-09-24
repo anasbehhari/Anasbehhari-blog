@@ -29,8 +29,8 @@ const Search = () => {
                             <Link href="/tag/life" >
                                 <a style={{ background: '#b43adf' }}>Life</a>
                             </Link>
-                            <Link href="/tag/technology" >
-                                <a style={{ background: '#2d841f' }}>Technology</a>
+                            <Link href="/tag/coding" >
+                                <a style={{ background: '#2d841f' }}>coding</a>
                             </Link>
                         </div>
                     </div>
