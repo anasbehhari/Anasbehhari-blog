@@ -72,7 +72,7 @@ const Footer = props => {
                         
                       </li>
                       <li className="nav-link">
-                        <Link href={"/tag/progamming"}>progamming</Link>
+                        <Link href={"/tag/programming"}>programming</Link>
                         
                       </li>
                       <li className="nav-link">
