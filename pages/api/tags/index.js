@@ -2,7 +2,7 @@ import connectDb from "../../../utils/Dbconn";
 import Tag from "../../../models/Tag";
 connectDb();
 export default async function tags(req, res) {
-  const { method, query,connection } = req;
+  const { method, query } = req;
   switch (method) {
     case "GET":
       if (query.max) {
@@ -16,9 +16,7 @@ export default async function tags(req, res) {
         } catch (error) {
           res.json(error);
         }
-      }
-      
-      else {
+      } else {
         const tags = await Tag.find({});
         try {
           if (tags.length != 0) {
@@ -33,18 +31,24 @@ export default async function tags(req, res) {
 
       break;
     case "POST":
-      try {
-        const newTag = await Tag.create(req.body);
-        res
-          .status(200)
-          .json({
+      if (query.password == process.env.password) {
+        try {
+          const newTag = await Tag.create(req.body);
+          res.status(200).json({
             success: true,
-            message: "Document well inserted !",
+          
             data: newTag,
           });
-      } catch (error) {
-        res.status(400).json(error);
+        } catch (error) {
+          res.status(400).json(error);
+        }
+      } else {
+        res.json({
+          message: "permission not allowed !!",
+          state: "failure",
+          success: false,
+        });
       }
       break;
   }
-};
+}

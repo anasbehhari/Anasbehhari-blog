@@ -5,26 +5,19 @@ import { GETIP } from "../../../utils/StaticFunction";
 connectDb();
 const password = process.env.password;
 export default async function wrd(req, res) {
-    const { method, query } = req;
+  const { method, query } = req;
+  if (query.password == password) {
     switch (method) {
       case "GET":
-        if (query.password == password) {
-          const Words = await Word.find({});
-          try {
-            if (Words.length != 0) {
-              res.json(Words);
-            } else {
-              res.json({ success: true, message: "Empty collection !" });
-            }
-          } catch (error) {
-            res.json(error);
+        const Words = await Word.find({});
+        try {
+          if (Words.length != 0) {
+            res.json(Words);
+          } else {
+            res.json({ success: true, message: "Empty collection !" });
           }
-        } else {
-          res.json({
-            message: "permission not allowed !!",
-            state: "failure",
-            success: false,
-          });
+        } catch (error) {
+          res.json(error);
         }
 
         break;
@@ -59,4 +52,11 @@ export default async function wrd(req, res) {
 
         break;
     }
+  } else {
+    res.json({
+      message: "permission not allowed !!",
+      state: "failure",
+      success: false,
+    });
+  }
 }

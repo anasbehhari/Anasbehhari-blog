@@ -6,7 +6,9 @@ export default async function titG(req, res) {
   switch (method) {
     case "GET":
       if (query.max && query.offset && !query.tag) {
-        const Blogs = await Blog.find({}).skip(parseInt(query.offset)).limit(parseInt(query.max));
+        const Blogs = await Blog.find({})
+          .skip(parseInt(query.offset))
+          .limit(parseInt(query.max));
         try {
           if (Blogs.length != 0) {
             res.json(Blogs);
@@ -16,9 +18,10 @@ export default async function titG(req, res) {
         } catch (error) {
           res.json(error);
         }
-      }
-      else if (query.max && query.offset && query.tag) {
-        const Blogs = await Blog.find({Tags:query.tag}).skip(parseInt(query.offset)).limit(parseInt(query.max));
+      } else if (query.max && query.offset && query.tag) {
+        const Blogs = await Blog.find({ Tags: query.tag })
+          .skip(parseInt(query.offset))
+          .limit(parseInt(query.max));
         try {
           if (Blogs.length != 0) {
             res.json(Blogs);
@@ -28,8 +31,7 @@ export default async function titG(req, res) {
         } catch (error) {
           res.json(error);
         }
-      }
-      else {
+      } else {
         const Blogs = await Blog.find({});
         try {
           if (Blogs.length != 0) {
@@ -44,18 +46,24 @@ export default async function titG(req, res) {
 
       break;
     case "POST":
-      try {
-        const newBlog = await Blog.create(req.body);
-        res
-          .status(200)
-          .json({
+      if (query.password) {
+        try {
+          const newBlog = await Blog.create(req.body);
+          res.status(200).json({
             success: true,
-            message: "Document well inserted !",
+          
             data: newBlog,
           });
-      } catch (error) {
-        res.status(400).json(error);
+        } catch (error) {
+          res.status(400).json(error);
+        }
+        break;
+      } else {
+        res.json({
+          message: "permission not allowed !!",
+          state: "failure",
+          success: false,
+        });
       }
-      break;
   }
-};
+}
