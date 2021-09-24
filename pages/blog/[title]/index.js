@@ -97,7 +97,7 @@ function Index({ blog }) {
                       <a
                         className="facebook"
                         href={
-                          "https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/blog/" +
+                          "https://www.facebook.com/sharer/sharer.php?u=/blog/" +
                           title
                         }
                         title="Share on Facebook"
@@ -132,7 +132,7 @@ function Index({ blog }) {
                       <a
                         className="pinterest"
                         href={
-                          "http://pinterest.com/pin/create/button/?url=http://localhost:3000/blog/" +
+                          "http://pinterest.com/pin/create/button/?url=/blog/" +
                           title +
                           "&media=https://arun.gbjsolution.com/content/images/2021/05/tengyart-pNq5uxt-f7k-unsplash.jpg&description=" +
                           StaticFunction.replaceAll(title, "-", "%20")
@@ -155,7 +155,7 @@ function Index({ blog }) {
                       <a
                         className="whatsapp"
                         href={
-                          "whatsapp://send?text=http://localhost:3000/blog/" +
+                          "whatsapp://send?text=/blog/" +
                           title
                         }
                         data-action="share/whatsapp/share"
@@ -173,7 +173,7 @@ function Index({ blog }) {
                       <a
                         className="linkedin"
                         href={
-                          "http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:3000/blog/" +
+                          "http://www.linkedin.com/shareArticle?mini=true&url=/blog/" +
                           title +
                           "&title=" +
                           StaticFunction.replaceAll(title, "-", "%20")
@@ -194,7 +194,7 @@ function Index({ blog }) {
                         className="link js-copy-link"
                         href="#"
                         data-clipboard-text={
-                          "http://localhost:3000/blog/" + title
+                          "/blog/" + title
                         }
                         title="Copy the permalink"
                         rel="noopener"
@@ -248,7 +248,7 @@ function Index({ blog }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/blogs");
+  const res = await fetch("/api/blogs");
   const blogs = await res.json();
 
   const paths = blogs.map((blog) => ({
@@ -259,7 +259,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `http://localhost:3000/api/blogs/${params.title}?password=${process.env.password}`
+    `/api/blogs/${params.title}?password=${process.env.password}`
   );
   const blog = await res.json();
   return { props: { blog } };

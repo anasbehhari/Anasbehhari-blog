@@ -10,7 +10,7 @@ const Blogs = ({ blogs, error }) => {
     let offset = document.querySelectorAll(".blog-post-tag").length;
     if (offset == blogs.length) {
       axios
-        .get("http://localhost:3000/api/blogs?offset=" + offset + "&max=3")
+        .get("/api/blogs?offset=" + offset + "&max=3")
         .then((res) => {
           if (res.data.length >= 1 && !res.data.blogs) {
             res.data.forEach((blog) => {
@@ -81,7 +81,7 @@ const Blogs = ({ blogs, error }) => {
   }
 };
 export async function getStaticProps() {
-  const res = await fetch(`http://localhost:3000/api/blogs?offset=0&max=5`);
+  const res = await fetch(`/api/blogs?offset=0&max=5`);
   const blogs = await res.json();
   if (blogs) {
     return {
