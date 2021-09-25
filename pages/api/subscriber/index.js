@@ -20,16 +20,17 @@ export default async function sub(req, res) {
 
         break;
       case "POST":
-        const subscriber = await Subscriber.find({ email: req.body.email });
+        let body = JSON.parse(req.body);
+        const subscriber = await Subscriber.find({ email: body.email });
         try {
           if (subscriber.length == 0) {
             try {
-              const newSubscriber = await Subscriber.create(req.body);
+              const newSubscriber = await Subscriber.create(body);
               res.status(200).json({
-                success: true,
+                success: true
               });
             } catch (error) {
-              res.status(400).json({ error, success: false });
+              res.status(400).json({ error:req.body, success: false });
             }
           } else {
             res
@@ -37,7 +38,7 @@ export default async function sub(req, res) {
               .json({ message: "you already signed up !", success: false });
           }
         } catch (error) {
-          res.status(400).json({ error, success: false });
+          res.status(400).json({ error:"dd", success: false });
         }
 
         break;

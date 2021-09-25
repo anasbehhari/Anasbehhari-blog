@@ -16,47 +16,47 @@ const subscribe = () => {
       span.innerHTML = "";
       if (StaticFunction.isvalidEmail(email) && name != "") {
         setTimeout(() => {
-          fetch("/api/subscriber?password=" + process.env.password,{
-              method:"POST",
-              body : {
-                name,
-                email,
-              }
-          }) 
-          .then(res => res.json())
+          fetch("/api/subscriber?password=" + process.env.password, {
+            method: "POST",
+            body: JSON.stringify({
+              name,
+              email,
+            }),
+          })
+            .then((res) => res.json())
             .then(function (response) {
+              console.log(response);
               button.classList.remove("spinning");
-              if (response.data.success) {
-                button.classList.toggle("bn");
-
-                spin.classList.toggle("hidden");
+              button.classList.toggle("bn");
+              spin.classList.toggle("hidden");
+              i--;
+              if (response.success) {
                 span.innerHTML = "Subscribed";
                 button.classList.add("sucbtn");
-                i--;
                 setTimeout(() => {
                   button.classList.remove("sucbtn");
                   span.innerHTML = "Subscribe";
                 }, 2000);
-              } else if (!response.data.success && response.status == 200) {
-                spin.classList.toggle("hidden");
-
-                button.classList.add("errcbtn");
-                span.innerHTML = "Already Subs";
-                i--;
-                setTimeout(() => {
-                  button.classList.remove("errcbtn");
-                  span.innerHTML = "Subscribe";
-                }, 2000);
+                return;
               }
+              button.classList.add("errcbtn");
+              span.innerHTML = "Already Subs";
+              setTimeout(() => {
+                button.classList.remove("errcbtn");
+                span.innerHTML = "Subscribe";
+              }, 2000);
             })
             .catch(function (error) {
               button.classList.toggle("bn");
               spin.classList.toggle("hidden");
               button.classList.add("errcbtn");
               button.classList.remove("spinning");
-              button.innerHTML = "ooops!";
+              span.innerHTML = "ooops!";
               i--;
-              setTimeout(() => button.classList.remove("errcbtn"), 1500);
+              setTimeout(() => {
+                button.classList.remove("errcbtn");
+                span.innerHTML = "Subscribe";
+              }, 2000);
             });
         }, 2000);
       }

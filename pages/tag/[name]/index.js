@@ -112,7 +112,7 @@ const Index = ({ tag, error }) => {
 };
 
 export async function getStaticPaths() {
-  const res = await fetch("/api/tags");
+  const res = await fetch(`${process.env.origin}/api/tags`);
   const tags = await res.json();
   const paths = tags.map((tag) => ({
     params: { name: tag.name.toString() },
@@ -121,7 +121,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `/api/tags/${params.name}?blogs=true&max=5`
+    `${process.env.origin}/api/tags/${params.name}?blogs=true&max=5`
   );
   const tag = await res.json();
   return { props: { tag } };

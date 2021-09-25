@@ -49,7 +49,7 @@ const Tags = ({ data, error }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`/api/tags`);
+  const res = await fetch(`${process.env.origin}/api/tags`);
   const data = await res.json();
   if (data) {
     return {

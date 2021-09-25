@@ -248,7 +248,7 @@ function Index({ blog }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("/api/blogs");
+  const res = await fetch(`${process.env.origin}/api/blogs`);
   const blogs = await res.json();
 
   const paths = blogs.map((blog) => ({
@@ -259,7 +259,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `/api/blogs/${params.title}?password=${process.env.password}`
+    `${process.env.origin}/api/blogs/${params.title}?password=${process.env.password}`
   );
   const blog = await res.json();
   return { props: { blog } };

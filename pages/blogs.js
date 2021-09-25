@@ -81,7 +81,7 @@ const Blogs = ({ blogs, error }) => {
   }
 };
 export async function getStaticProps() {
-  const res = await fetch(`/api/blogs?offset=0&max=5`);
+  const res = await fetch(`${process.env.origin}/api/blogs?offset=0&max=5`);
   const blogs = await res.json();
   if (blogs) {
     return {
