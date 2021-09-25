@@ -101,8 +101,8 @@ const index = ({ data, error }) => {
     
    
 
-export async function getStaticProps() {
-    const res = await fetch(`/api/blogs/lts-pop`);
+export async function getStaticProps(req) {
+    const res = await fetch(`http://localhost:3000/api/blogs/lts-pop`);
     const data = await res.json();
     if (data) {
       return {

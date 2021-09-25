@@ -1,5 +1,4 @@
 import StaticFunction from "../utils/StaticFunction";
-import axios from "axios";
 const subscribe = () => {
   let i = 0;
   const handleSubscription = function (e) {
@@ -17,11 +16,14 @@ const subscribe = () => {
       span.innerHTML = "";
       if (StaticFunction.isvalidEmail(email) && name != "") {
         setTimeout(() => {
-          axios
-            .post("/api/subscriber?password=" + process.env.password, {
-              name,
-              email,
-            })
+          fetch("/api/subscriber?password=" + process.env.password,{
+              method:"POST",
+              body : {
+                name,
+                email,
+              }
+          }) 
+          .then(res => res.json())
             .then(function (response) {
               button.classList.remove("spinning");
               if (response.data.success) {
